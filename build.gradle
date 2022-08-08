@@ -1,0 +1,42 @@
+buildscript {
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+group 'com.conversion'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.seleniumhq.selenium:selenium-java:4.3.0'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.2.3'
+    implementation 'com.aventstack:extentreports:5.0.9'
+    implementation 'org.apache.poi:poi:5.2.2'
+    implementation 'org.apache.poi:poi-ooxml:5.2.2'
+    testImplementation 'org.testng:testng:7.5'
+}
+
+test {
+    useTestNG() {
+        suites 'src/test/TestNG.xml'
+    }
+}
+
+task runSuite(type: Test) {
+
+    useTestNG() {
+        suites 'src/test/TestNG.xml'
+    }
+}
